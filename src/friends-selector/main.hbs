@@ -1,0 +1,20 @@
+<h3>Here are your friends</h3>
+<ul>
+  <form>
+  {{#friends}}
+  {{#each data}}
+  <li>
+    <input type="checkbox" name="friends[]" value="{{id}}" id="apprequest-{{id}}" />
+    <label for="apprequest-{{id}}">
+      <img src="{{picture.data.url}}" />
+      {{name}}
+    </label>
+  </li>
+  {{/each}}
+  {{/friends}}
+  <textarea name="message" placeholder="Type your invite message here !"></textarea>
+  <input type="submit" name="Invite them" value="GO !" />
+  </form>
+
+  <a class="btn" data-hull-action="invite">Invite your friends !</a>
+</ul>
