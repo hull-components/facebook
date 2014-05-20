@@ -24,29 +24,39 @@
   </style>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <script src="//hull-js.s3.amazonaws.com/0.8/hull.js"></script>
+  <!-- // <script src="//hull-js.s3.amazonaws.com/0.8/hull.js"></script> -->
+  <script src="//js.hull.dev/dist/current/hull.js"></script>
   <script>
   var componentsList = {{{json components}}};
   Hull.component('component-preview', {
-    render: function() {},
     actions: {
       preview: function(event, action) {
-        var name = action.data.name;
-        var component = componentsList[action.data.name].config || {};
-        if (component) {
-          $('.dropdown').removeClass('open');
-          $('.current-component-name').html(name);
-          var previewEl = this.$('#preview');
-          var el = $('<div/>').text('loading...');
-          $.each((component.attributes || {}), function(k, v) {
-            el.attr(k,v);
-          });
-          previewEl.html(el);
-          var def = { options: $.extend({ el: el }, (component.options || {})), name: name };
-          this.sandbox.start([def], { reset: true });
-        } else {
-          console.warn("Component: ", name, " not found");
-        }
+        this.previewComponent(action.data.name);
+      }
+    },
+    previewComponent: function(name) {
+      var component = componentsList[name].config || {};
+      if (component) {
+        $('.dropdown').removeClass('open');
+        $('.current-component-name').html(name);
+        var previewEl = this.$('#preview');
+        var el = $('<div/>').text('loading...');
+        $.each((component.attributes || {}), function(k, v) {
+          el.attr(k,v);
+        });
+        previewEl.html(el);
+        var def = { options: $.extend({ el: el }, (component.options || {})), name: name };
+        this.sandbox.start([def], { reset: true });
+      } else {
+        console.warn("Component: ", name, " not found");
+      }
+    },
+    render: function() {
+      var self = this, componentName = (document.location.hash || "#").slice(1);
+      if (componentsList[componentName]) {
+        setTimeout(function() {
+          self.previewComponent(componentName);
+        }, 100);
       }
     }
   });
@@ -88,16 +98,14 @@
     </div>
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-12" id="preview">
-          <ul class="nav nav-pills nav-stacked">
-            {{#each components}}
-            <li>
-              <a href="#" data-hull-action="preview" data-hull-name="{{name}}">{{name}}</a>
-            </li>
-            {{/each}}
-          </ul>
-        </div>
+      <div id="preview">
+        <ul class="nav nav-pills nav-stacked">
+          {{#each components}}
+          <li>
+            <a href="#" data-hull-action="preview" data-hull-name="{{name}}">{{name}}</a>
+          </li>
+          {{/each}}
+        </ul>
       </div>
     </div>
   </div>

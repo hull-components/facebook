@@ -1,20 +1,40 @@
-<h3>Here are your friends</h3>
-<ul>
-  <form>
-  {{#friends}}
-  {{#each data}}
-  <li>
-    <input type="checkbox" name="friends[]" value="{{id}}" id="apprequest-{{id}}" />
-    <label for="apprequest-{{id}}">
-      <img src="{{picture.data.url}}" />
-      {{name}}
-    </label>
-  </li>
-  {{/each}}
-  {{/friends}}
-  <textarea name="message" placeholder="Type your invite message here !"></textarea>
-  <input type="submit" name="Invite them" value="GO !" />
-  </form>
+<h3>
+  <div class="pull-right">
+    <a class="btn" data-hull-action="selectAll">Select all</a>
+    <a class="btn" data-hull-action="unselectAll">Unselect all</a>
+  </div>
+  {{friendsList.length}} friends
+</h3>
+<form>
+  <div class="row">
+    <div class="col-md-12">
+      <textarea name="message" class="form-control" rows="2" placeholder="Type your invite message here !">{{options.message}}</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12"><hr/></div>
+  </div>
+  <div class="users-grid hidden">
+    {{#grid friendsList 3}}
+    <div class="media" data-friend="{{id}}">
+      <input type="checkbox" name="friends[]" value="{{id}}" id="friend-selected-{{id}}" class="hidden" />
+      <label for="friend-selected-{{id}}">
+        <div class="pull-left"><img src="{{picture.data.url}}" class="img-circle" /></div>
+        <div class="media-body">
+          <h5>{{name}}</h5>
+          <h5 class="muted">
+            {{relationship_status}}
+          </h5>
+        </div>
+      </label>
+    </div>
+    {{/grid}}
+  </div>
 
-  <a class="btn" data-hull-action="invite">Invite your friends !</a>
-</ul>
+  <div class="row">
+    <div class="col-md-12">
+      <hr/>
+      <input class="btn btn-primary btn-block" type="submit" name="method" value="Send" />
+    </div>
+  </div>
+</form>
