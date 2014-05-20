@@ -1,0 +1,113 @@
+<html>
+<head>
+  <title>Hull Components - facebook - version: f431de2ea1b35e8419a7347bb1264ad63e43e3ee</title>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css" media="screen">
+    body {
+      min-width: 970px;
+      padding-top: 70px;
+      padding-bottom: 30px;
+    }
+
+    /* Finesse the page header spacing */
+    .page-header {
+      margin-bottom: 30px;
+    }
+    .page-header .lead {
+      margin-bottom: 10px;
+    }
+
+    .login-profile img {
+      width: 36px;
+      height: 36px;
+    }
+  </style>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <!-- // <script src="//hull-js.s3.amazonaws.com/0.8/hull.js"></script> -->
+  <script src="//js.hull.dev/dist/current/hull.js"></script>
+  <script>
+  var componentsList = {"friends-selector":{"main":"src/friends-selector/main.js","version":"f431de2ea1b35e8419a7347bb1264ad63e43e3ee","sourcePath":"/Users/sbellity/code/hull/hull-components/facebook/src","name":"friends-selector","basePath":"src/friends-selector","destPath":"/Users/sbellity/code/hull/hull-components/facebook/dist/friends-selector","options":{"optimize":true,"templates":{"extension":"hbs","wrapped":false,"namespace":"Hull.templates._default"},"stylesheets":{"extension":"css"},"sourceName":"facebook","config":{"init":{"appId":"51e88549d4503744b4000009","orgUrl":"http://e2ee4d3b.hullapp.dev","jsUrl":"http://js.hull.dev/dist","debug":true,"sources":{"default":"."}},"components":{"friends-selector":{"options":{"title":"Invite your best friends","method":"apprequests","href":"http://hull.io","friendsFields":"significant_other,age_range,relationship_status,gender","message":"Hey Check this out","friendsFilters":[{"gender":"male","relationship_status":"Married"},{"gender":"male","relationship_status":"In a relationship"}]}}}},"version":"f431de2ea1b35e8419a7347bb1264ad63e43e3ee"},"files":{"templates":["main.hbs"],"stylesheets":[],"javascripts":["main.js"]},"config":{"options":{"title":"Invite your best friends","method":"apprequests","href":"http://hull.io","friendsFields":"significant_other,age_range,relationship_status,gender","message":"Hey Check this out","friendsFilters":[{"gender":"male","relationship_status":"Married"},{"gender":"male","relationship_status":"In a relationship"}]}}}};
+  Hull.component('component-preview', {
+    actions: {
+      preview: function(event, action) {
+        this.previewComponent(action.data.name);
+      }
+    },
+    previewComponent: function(name) {
+      var component = componentsList[name].config || {};
+      if (component) {
+        $('.dropdown').removeClass('open');
+        $('.current-component-name').html(name);
+        var previewEl = this.$('#preview');
+        var el = $('<div/>').text('loading...');
+        $.each((component.attributes || {}), function(k, v) {
+          el.attr(k,v);
+        });
+        previewEl.html(el);
+        var def = { options: $.extend({ el: el }, (component.options || {})), name: name };
+        this.sandbox.start([def], { reset: true });
+      } else {
+        console.warn("Component: ", name, " not found");
+      }
+    },
+    render: function() {
+      var self = this, componentName = (document.location.hash || "#").slice(1);
+      if (componentsList[componentName]) {
+        setTimeout(function() {
+          self.previewComponent(componentName);
+        }, 100);
+      }
+    }
+  });
+
+  Hull.init({"appId":"51e88549d4503744b4000009","orgUrl":"http://e2ee4d3b.hullapp.dev","jsUrl":"http://js.hull.dev/dist","debug":true,"sources":{"default":"."}});
+  </script>
+</head>
+<body>
+  <div  data-hull-component="component-preview">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand">
+            facebook
+          </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                <span class="current-component-name">&nbsp;</span> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                
+                <li role="presentation">
+                  <a data-target="#" role="menuitem" data-toggle="dropdown" data-hull-action="preview" data-hull-name="friends-selector">
+                    friends-selector
+                  </a>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class='login-profile' data-hull-component="login/profile@hull"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="preview">
+        <ul class="nav nav-pills nav-stacked">
+          
+          <li>
+            <a href="#" data-hull-action="preview" data-hull-name="friends-selector">friends-selector</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "friends-selector",
+  "version": "f431de2ea1b35e8419a7347bb1264ad63e43e3ee",
+  "files": {
+    "templates": [
+      "main.hbs"
+    ],
+    "stylesheets": [],
+    "javascripts": [
+      "main.js"
+    ]
+  },
+  "buildDate": "2014-05-20T12:24:39.158Z"
+}
