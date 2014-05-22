@@ -68,7 +68,11 @@ Hull.component({
       }
       var fn = this.sandbox[this.loginAction || loginAction];
       action.el.text("Loading...");
-      fn('facebook').then(function(res) {
+      var opts = {};
+      if (this.options.permissions) {
+        opts.scope = this.options.permissions;
+      }
+      fn('facebook', opts).then(function(res) {
         action.el.text("Logged in with " + res.name);
       }, function(err) {
         if (err.reason == 'identity_taken') {
@@ -135,6 +139,7 @@ Hull.component({
     if (data.friends) {
       data.friendsList = this.filterFriends(data.friends.data || []);  
     }
+    data.columns = this.options.columns || 3;
   },
 
   afterRender: function() {
@@ -146,6 +151,7 @@ Hull.component({
     });
     $grid.removeClass('hidden');
     this.$sendBtn = this.$('input[type="submit"]');
+    this.$('textarea[name="message"]').focus();
   },
 
   afterSent: function() {

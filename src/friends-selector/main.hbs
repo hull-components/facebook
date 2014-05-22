@@ -24,7 +24,7 @@
       </div>
       {{#if friendsList}}
       <div class="users-grid hidden">
-        {{#grid friendsList 3}}
+        {{#grid friendsList columns}}
         <div class="media" data-friend="{{id}}">
           <div class="pull-right">
             <input type="checkbox" name="friends[]" value="{{id}}" id="friend-selected-{{id}}"/>
