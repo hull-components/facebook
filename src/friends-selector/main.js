@@ -11,7 +11,7 @@ Hull.component({
   },
 
   initialize: function() {
-    this.method = (this.options.method || 'share').toLowerCase();
+    this.method = (this.options.method || 'apprequests').toLowerCase();
     this.buildParams = this.buildParamsFor[this.method] || function(params) { return params; };
   },
 
