@@ -1,54 +1,58 @@
-{{#if loggedIn.facebook}}
-<h3>
-  <div class="pull-right">
-    <a class="btn" data-hull-action="selectAll">Select all</a>
-    <a class="btn" data-hull-action="unselectAll">Unselect all</a>
-  </div>
-  {{friendsList.length}} friends
-</h3>
-<form>
-  <div class="row">
-    <div class="col-md-12">
-      <textarea name="message" class="form-control" rows="2" placeholder="Type your invite message here !">{{options.message}}</textarea>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12"><hr/></div>
-  </div>
-  <div class="users-grid hidden">
+<div class="panel panel-default">
+  <div class="panel-heading">
     {{#if friendsList}}
-    {{#grid friendsList 3}}
-    <div class="media" data-friend="{{id}}">
-      <input type="checkbox" name="friends[]" value="{{id}}" id="friend-selected-{{id}}" class="hidden" />
-      <label for="friend-selected-{{id}}">
-        <div class="pull-left"><img src="{{picture.data.url}}" class="img-circle" /></div>
-        <div class="media-body">
-          <h5>{{name}}</h5>
-          <h5 class="muted">
-            {{relationship_status}}
-          </h5>
+    <small class="pull-right">
+      <a href="#" data-hull-action="selectAll">Select all</a>
+      &nbsp;|&nbsp;
+      <a href="#" data-hull-action="unselectAll">Unselect all</a>
+    </small>
+    {{/if}}
+    <h2 class="panel-title">{{fallback options.title "Select friends"}}</h2>
+  </div>
+
+  <div class="panel-body">
+    {{#if loggedIn.facebook}}
+    <form>
+      <div class="row">
+        <div class="col-md-12">
+          {{#if options.caption}}
+          <p>This is a text explanation of what's happening here....</p>
+          {{/if}}
+          <textarea name="message" class="form-control" rows="2" placeholder="{{fallback options.placeholder "Type your invite message here !"}}">{{options.message}}</textarea>
+          <hr/>
         </div>
-      </label>
-    </div>
-    {{/grid}}
-    {{else}}
-    <div class="row">
-      <div class="col-md-12">
-        <h3 class="text-muted ">No friends match this criteria</h3>
       </div>
-    </div>
+      {{#if friendsList}}
+      <div class="users-grid hidden">
+        {{#grid friendsList 3}}
+        <div class="media" data-friend="{{id}}">
+          <div class="pull-left">
+            <input type="checkbox" name="friends[]" value="{{id}}" id="friend-selected-{{id}}"/>
+            <label for="friend-selected-{{id}}"><img src="{{picture.data.url}}" /></label>
+          </div>
+          <label for="friend-selected-{{id}}">
+            <div class="media-body">
+              <h5>{{name}}</h5>
+            </div>
+          </label>
+        </div>
+        </a>
+        {{/grid}}
+      </div>
+      <hr/>
+      {{/if}}
+      
+      <div class="row">
+        <div class="col-md-12">
+          <input class="btn btn-primary btn-block" type="submit" name="method" value="Send Invitation" />
+        </div>
+      </div>
+    </form>
+    {{else}}
+    <button class="btn btn-primary" data-hull-action="loginWithFacebook">
+      Login with Facebook
+    </button>
     {{/if}}
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <hr/>
-      <input class="btn btn-primary btn-block" type="submit" name="method" value="Send" />
-    </div>
-  </div>
-</form>
-{{else}}
-<button class="btn btn-primary" data-hull-action="loginWithFacebook">
-  Login with Facebook
-</button>
-{{/if}}
+</div>
