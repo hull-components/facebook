@@ -18,7 +18,7 @@
           {{#if options.caption}}
           <p>This is a text explanation of what's happening here....</p>
           {{/if}}
-          <textarea name="message" class="form-control" rows="2" placeholder="{{fallback options.placeholder "Type your invite message here !"}}">{{options.message}}</textarea>
+          <textarea name="message" required class="form-control" rows="2" placeholder="{{fallback options.placeholder "Type your invite message here !"}}">{{options.message}}</textarea>
           <hr/>
         </div>
       </div>
@@ -26,8 +26,10 @@
       <div class="users-grid hidden">
         {{#grid friendsList 3}}
         <div class="media" data-friend="{{id}}">
-          <div class="pull-left">
+          <div class="pull-right">
             <input type="checkbox" name="friends[]" value="{{id}}" id="friend-selected-{{id}}"/>
+          </div>
+          <div class="pull-left">
             <label for="friend-selected-{{id}}"><img src="{{picture.data.url}}" /></label>
           </div>
           <label for="friend-selected-{{id}}">
