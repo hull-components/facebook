@@ -100,8 +100,8 @@ Hull.component({
         delete params.friends;
       }
 
-      if (this.options.redirectUri) {
-        params.redirect_uri = this.options.redirectUri;
+      if (this.options.redirectTo) {
+        params.data = JSON.stringify({ r: this.options.redirectTo });
       }
 
       if (this.options.title) {
