@@ -8,12 +8,49 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
 function program1(depth0,data) {
   
+  
+  return "\n    <small class=\"pull-right\">\n      <a href=\"#\" data-hull-action=\"selectAll\">Select all</a>\n      &nbsp;|&nbsp;\n      <a href=\"#\" data-hull-action=\"unselectAll\">Unselect all</a>\n    </small>\n    ";
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = "", stack1, helper, options;
+  buffer += "\n    <form>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          ";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.options)),stack1 == null || stack1 === false ? stack1 : stack1.caption), {hash:{},inverse:self.noop,fn:self.program(4, program4, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n          <textarea name=\"message\" required class=\"form-control\" rows=\"2\" placeholder=\""
+    + escapeExpression((helper = helpers.fallback || (depth0 && depth0.fallback),options={hash:{},data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.options)),stack1 == null || stack1 === false ? stack1 : stack1.placeholder), "Type your invite message here !", options) : helperMissing.call(depth0, "fallback", ((stack1 = (depth0 && depth0.options)),stack1 == null || stack1 === false ? stack1 : stack1.placeholder), "Type your invite message here !", options)))
+    + "\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.options)),stack1 == null || stack1 === false ? stack1 : stack1.message)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</textarea>\n          <hr/>\n        </div>\n      </div>\n      ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.friendsList), {hash:{},inverse:self.noop,fn:self.program(6, program6, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n      \n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <input class=\"btn btn-primary btn-block\" type=\"submit\" name=\"method\" value=\"Send Invitation\" />\n        </div>\n      </div>\n    </form>\n    ";
+  return buffer;
+  }
+function program4(depth0,data) {
+  
+  
+  return "\n          <p>This is a text explanation of what's happening here....</p>\n          ";
+  }
+
+function program6(depth0,data) {
+  
+  var buffer = "", stack1, helper, options;
+  buffer += "\n      <div class=\"users-grid hidden\">\n        ";
+  stack1 = (helper = helpers.grid || (depth0 && depth0.grid),options={hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.friendsList), (depth0 && depth0.columns), options) : helperMissing.call(depth0, "grid", (depth0 && depth0.friendsList), (depth0 && depth0.columns), options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n      </div>\n      <hr/>\n      ";
+  return buffer;
+  }
+function program7(depth0,data) {
+  
   var buffer = "", stack1, helper;
-  buffer += "\n    <div class=\"media\" data-friend=\"";
+  buffer += "\n        <div class=\"media\" data-friend=\"";
   if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\">\n      <input type=\"checkbox\" name=\"friends[]\" value=\"";
+    + "\">\n          <div class=\"pull-right\">\n            <input type=\"checkbox\" name=\"friends[]\" value=\"";
   if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -21,37 +58,45 @@ function program1(depth0,data) {
   if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"hidden\" />\n      <label for=\"friend-selected-";
+    + "\"/>\n          </div>\n          <div class=\"pull-left\">\n            <label for=\"friend-selected-";
   if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\">\n        <div class=\"pull-left\"><img src=\""
+    + "\"><img src=\""
     + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.picture)),stack1 == null || stack1 === false ? stack1 : stack1.data)),stack1 == null || stack1 === false ? stack1 : stack1.url)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"img-circle\" /></div>\n        <div class=\"media-body\">\n          <h5>";
+    + "\" /></label>\n          </div>\n          <label for=\"friend-selected-";
+  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">\n            <div class=\"media-body\">\n              <h5>";
   if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h5>\n          <h5 class=\"muted\">\n            ";
-  if (helper = helpers.relationship_status) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.relationship_status); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\n          </h5>\n        </div>\n      </label>\n    </div>\n    ";
+    + "</h5>\n            </div>\n          </label>\n        </div>\n        </a>\n        ";
   return buffer;
   }
 
-  buffer += "<h3>\n  <div class=\"pull-right\">\n    <a class=\"btn\" data-hull-action=\"selectAll\">Select all</a>\n    <a class=\"btn\" data-hull-action=\"unselectAll\">Unselect all</a>\n  </div>\n  "
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.friendsList)),stack1 == null || stack1 === false ? stack1 : stack1.length)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + " friends\n</h3>\n<form>\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <textarea name=\"message\" class=\"form-control\" rows=\"2\" placeholder=\"Type your invite message here !\">"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.options)),stack1 == null || stack1 === false ? stack1 : stack1.message)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</textarea>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-12\"><hr/></div>\n  </div>\n  <div class=\"users-grid hidden\">\n    ";
-  stack1 = (helper = helpers.grid || (depth0 && depth0.grid),options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.friendsList), 3, options) : helperMissing.call(depth0, "grid", (depth0 && depth0.friendsList), 3, options));
+function program9(depth0,data) {
+  
+  
+  return "\n    <button class=\"btn btn-primary\" data-hull-action=\"loginWithFacebook\">\n      Login with Facebook\n    </button>\n    ";
+  }
+
+  buffer += "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.friendsList), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <hr/>\n      <input class=\"btn btn-primary btn-block\" type=\"submit\" name=\"method\" value=\"Send\" />\n    </div>\n  </div>\n</form>\n";
+  buffer += "\n    <h2 class=\"panel-title\">"
+    + escapeExpression((helper = helpers.fallback || (depth0 && depth0.fallback),options={hash:{},data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.options)),stack1 == null || stack1 === false ? stack1 : stack1.title), "Select friends", options) : helperMissing.call(depth0, "fallback", ((stack1 = (depth0 && depth0.options)),stack1 == null || stack1 === false ? stack1 : stack1.title), "Select friends", options)))
+    + "</h2>\n  </div>\n\n  <div class=\"panel-body\">\n    ";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.loggedIn)),stack1 == null || stack1 === false ? stack1 : stack1.facebook), {hash:{},inverse:self.program(9, program9, data),fn:self.program(3, program3, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n  </div>\n\n</div>";
   return buffer;
   } ; 
 
 Hull.component({
   templates: ['main'],
+  refreshEvents: ['model.hull.me.change'],
 
   datasources: {
     friends: function() {
@@ -62,7 +107,7 @@ Hull.component({
   },
 
   initialize: function() {
-    this.method = (this.options.method || 'share').toLowerCase();
+    this.method = (this.options.method || 'apprequests').toLowerCase();
     this.buildParams = this.buildParamsFor[this.method] || function(params) { return params; };
   },
 
@@ -111,6 +156,26 @@ Hull.component({
           $(c).click();
         }
       });
+    },
+    loginWithFacebook: function(event, action) {
+      var self = this, loginAction = 'login';
+      if (this.loggedIn()) {
+        loginAction = 'linkIdentity';
+      }
+      var fn = this.sandbox[this.loginAction || loginAction];
+      action.el.text("Loading...");
+      var opts = {};
+      if (this.options.permissions) {
+        opts.scope = this.options.permissions;
+      }
+      fn('facebook', opts).then(function(res) {
+        action.el.text("Logged in with " + res.name);
+      }, function(err) {
+        if (err.reason == 'identity_taken') {
+          self.loginAction = 'login';
+          action.el.text('Login with Facebook');
+        }
+      });
     }
   },
 
@@ -131,8 +196,8 @@ Hull.component({
         delete params.friends;
       }
 
-      if (this.options.redirectUri) {
-        params.redirect_uri = this.options.redirectUri;
+      if (this.options.redirectTo) {
+        params.data = JSON.stringify({ r: this.options.redirectTo });
       }
 
       if (this.options.title) {
@@ -166,7 +231,11 @@ Hull.component({
   },
 
   beforeRender: function(data) {
-    data.friendsList = this.filterFriends(data.friends.data || []);
+    data.friendsList = []
+    if (data.friends) {
+      data.friendsList = this.filterFriends(data.friends.data || []);  
+    }
+    data.columns = this.options.columns || 3;
   },
 
   afterRender: function() {
@@ -178,6 +247,7 @@ Hull.component({
     });
     $grid.removeClass('hidden');
     this.$sendBtn = this.$('input[type="submit"]');
+    this.$('textarea[name="message"]').focus();
   },
 
   afterSent: function() {
@@ -216,8 +286,7 @@ Hull.component({
 
   filterFriends: function(friends) {
     var ret, _ = this.sandbox.util._, friendsFilters = this.friendsFilters();
-
-    if (friendsFilters.length > 0) {
+    if (friendsFilters.length == 0) {
       ret = friends;
     } else {
       ret = _.filter(friends, function(friend) {
