@@ -1,5 +1,6 @@
 Hull.component({
   templates: ['main'],
+  refreshEvents: ['model.hull.me.change'],
 
   datasources: {
     friends: function() {
@@ -59,6 +60,22 @@ Hull.component({
           $(c).click();
         }
       });
+    },
+    loginWithFacebook: function(event, action) {
+      var self = this, loginAction = 'login';
+      if (this.loggedIn()) {
+        loginAction = 'linkIdentity';
+      }
+      var fn = this.sandbox[this.loginAction || loginAction];
+      action.el.text("Loading...");
+      fn('facebook').then(function(res) {
+        action.el.text("Logged in with " + res.name);
+      }, function(err) {
+        if (err.reason == 'identity_taken') {
+          self.loginAction = 'login';
+          action.el.text('Login with Facebook');
+        }
+      });
     }
   },
 
@@ -114,7 +131,10 @@ Hull.component({
   },
 
   beforeRender: function(data) {
-    data.friendsList = this.filterFriends(data.friends.data || []);
+    data.friendsList = []
+    if (data.friends) {
+      data.friendsList = this.filterFriends(data.friends.data || []);  
+    }
   },
 
   afterRender: function() {
@@ -164,8 +184,7 @@ Hull.component({
 
   filterFriends: function(friends) {
     var ret, _ = this.sandbox.util._, friendsFilters = this.friendsFilters();
-
-    if (friendsFilters.length > 0) {
+    if (friendsFilters.length == 0) {
       ret = friends;
     } else {
       ret = _.filter(friends, function(friend) {

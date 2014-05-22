@@ -1,3 +1,4 @@
+{{#if loggedIn.facebook}}
 <h3>
   <div class="pull-right">
     <a class="btn" data-hull-action="selectAll">Select all</a>
@@ -15,6 +16,7 @@
     <div class="col-md-12"><hr/></div>
   </div>
   <div class="users-grid hidden">
+    {{#if friendsList}}
     {{#grid friendsList 3}}
     <div class="media" data-friend="{{id}}">
       <input type="checkbox" name="friends[]" value="{{id}}" id="friend-selected-{{id}}" class="hidden" />
@@ -29,6 +31,13 @@
       </label>
     </div>
     {{/grid}}
+    {{else}}
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-muted ">No friends match this criteria</h3>
+      </div>
+    </div>
+    {{/if}}
   </div>
 
   <div class="row">
@@ -38,3 +47,8 @@
     </div>
   </div>
 </form>
+{{else}}
+<button class="btn btn-primary" data-hull-action="loginWithFacebook">
+  Login with Facebook
+</button>
+{{/if}}
