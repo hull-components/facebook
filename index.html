@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Hull Components - facebook - version: 49959a538d5ccf2038c317f6dbfdea63f6e66ee7</title>
+  <title>Hull Components - facebook - version: 701cc3a81372ca5f662e76da7cb453b1bee4a073</title>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   <style type="text/css" media="screen">
     body {
@@ -23,10 +23,9 @@
     }
   </style>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="//hull-js.s3.amazonaws.com/0.8.32/hull.js"></script>
   <script>
-  var componentsList = {"friends-selector":{"main":"src/friends-selector/main.js","version":"49959a538d5ccf2038c317f6dbfdea63f6e66ee7","sourcePath":"/Users/sbellity/code/hull/hull-components/facebook/src","name":"friends-selector","basePath":"src/friends-selector","destPath":"/Users/sbellity/code/hull/hull-components/facebook/dist/friends-selector","options":{"optimize":true,"templates":{"extension":"hbs","wrapped":false,"namespace":"Hull.templates._default"},"stylesheets":{"extension":"css"},"sourceName":"facebook","config":{"version":"0.8.32","init":{"appId":"516d68fc28e06bb7b8000040","orgUrl":"https://hull-demos.hullapp.io","debug":true,"sources":{"default":"."}},"components":{"friends-selector":{"options":{"title":"Invite your best friends","method":"apprequests","redirectTo":"http://hull.io"}}}},"version":"49959a538d5ccf2038c317f6dbfdea63f6e66ee7"},"files":{"templates":["main.hbs"],"stylesheets":[],"javascripts":["main.js"]},"config":{"options":{"title":"Invite your best friends","method":"apprequests","redirectTo":"http://hull.io"}}}};
+  var componentsList = {"friends-selector":{"main":"src/friends-selector/main.js","version":"701cc3a81372ca5f662e76da7cb453b1bee4a073","sourcePath":"/Users/sbellity/code/hull/hull-components/facebook/src","name":"friends-selector","basePath":"src/friends-selector","destPath":"/Users/sbellity/code/hull/hull-components/facebook/dist/friends-selector","options":{"optimize":true,"templates":{"extension":"hbs","wrapped":false,"namespace":"Hull.templates._default"},"stylesheets":{"extension":"css"},"sourceName":"facebook","config":{"version":"0.8.32","init":{"appId":"537b6f0ad31d5b01ee00002e","orgUrl":"http://fb2.hullapp.dev","jsUrl":"http://s3.amazonaws.com/hull-js","debug":true,"sources":{"default":"."}},"components":{"friends-selector":{"options":null}}},"version":"701cc3a81372ca5f662e76da7cb453b1bee4a073"},"files":{"templates":["main.hbs"],"stylesheets":[],"javascripts":["main.js"]},"config":{"options":null}}};
   Hull.component('component-preview', {
     actions: {
       preview: function(event, action) {
@@ -60,7 +59,7 @@
     }
   });
 
-  Hull.init({"appId":"516d68fc28e06bb7b8000040","orgUrl":"https://hull-demos.hullapp.io","debug":true,"sources":{"default":"."}});
+  Hull.init({"appId":"537b6f0ad31d5b01ee00002e","orgUrl":"http://fb2.hullapp.dev","jsUrl":"http://s3.amazonaws.com/hull-js","debug":true,"sources":{"default":"."}});
   </script>
 </head>
 <body>
@@ -97,14 +96,14 @@
     </div>
 
     <div class="container">
-      <div id="preview">
-        <ul class="nav nav-pills nav-stacked">
-          
-          <li>
-            <a href="#" data-hull-action="preview" data-hull-name="friends-selector">friends-selector</a>
-          </li>
-          
-        </ul>
+      <ul class="nav nav-pills nav-stacked col-md-6">
+        
+        <li>
+          <a href="#" data-hull-action="preview" data-hull-name="friends-selector">friends-selector</a>
+        </li>
+        
+      </ul>
+      <div id="preview" class="col-md-6">
       </div>
     </div>
   </div>

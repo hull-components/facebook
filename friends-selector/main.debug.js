@@ -58,7 +58,7 @@ function program7(depth0,data) {
   if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\"/>\n          </div>\n          <div class=\"pull-left\">\n            <label for=\"friend-selected-";
+    + "\" class=\"hidden\"/>\n          </div>\n          <div class=\"pull-left\">\n            <label for=\"friend-selected-";
   if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -201,7 +201,7 @@ Hull.component({
       }
 
       if (this.options.title) {
-        params.title = this.options.title || "Come play with me";
+        params.title = this.options.title || "Invite your friends";
       }
 
       return params;
@@ -235,7 +235,7 @@ Hull.component({
     if (data.friends) {
       data.friendsList = this.filterFriends(data.friends.data || []);  
     }
-    data.columns = this.options.columns || 3;
+    data.columns = this.options.columns || 2;
   },
 
   afterRender: function() {
