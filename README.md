@@ -14,7 +14,7 @@ Hull.init({
   appId: 'xxxx',
   orgUrl: 'https://zzzzz.hullapp.io',
   sources: {
-    formbuilder: 'https://hull-components.github.io/facebook'
+    facebook: 'https://hull-components.github.io/facebook'
   }
 })
 ```
