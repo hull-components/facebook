@@ -105,7 +105,7 @@ Hull.component({
       }
 
       if (this.options.title) {
-        params.title = this.options.title || "Come play with me";
+        params.title = this.options.title || "Invite your friends";
       }
 
       return params;
@@ -139,7 +139,7 @@ Hull.component({
     if (data.friends) {
       data.friendsList = this.filterFriends(data.friends.data || []);  
     }
-    data.columns = this.options.columns || 3;
+    data.columns = this.options.columns || 2;
   },
 
   afterRender: function() {

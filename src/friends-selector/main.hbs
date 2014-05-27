@@ -27,7 +27,7 @@
         {{#grid friendsList columns}}
         <div class="media" data-friend="{{id}}">
           <div class="pull-right">
-            <input type="checkbox" name="friends[]" value="{{id}}" id="friend-selected-{{id}}"/>
+            <input type="checkbox" name="friends[]" value="{{id}}" id="friend-selected-{{id}}" class="hidden"/>
           </div>
           <div class="pull-left">
             <label for="friend-selected-{{id}}"><img src="{{picture.data.url}}" /></label>
