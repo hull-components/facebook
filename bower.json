@@ -1,0 +1,24 @@
+{
+  "name": "facebook",
+  "version": "0.1.0",
+  "homepage": "https://github.com/hull-components/facebook",
+  "authors": [
+    "Xavier Cambar <xcambar@gmail.com>"
+  ],
+  "description": "Facebook-specific components for Hull",
+  "keywords": [
+    "hull",
+    "facebook"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "hull": {
+    "sourceName": "facebook"
+  }
+}
