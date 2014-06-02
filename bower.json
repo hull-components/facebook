@@ -19,6 +19,7 @@
     "tests"
   ],
   "hull": {
-    "sourceName": "facebook"
+    "sourceName": "facebook",
+    "root": "src"
   }
 }
