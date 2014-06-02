@@ -20,6 +20,6 @@
   ],
   "hull": {
     "sourceName": "facebook",
-    "root": "src"
+    "src": "src"
   }
 }
