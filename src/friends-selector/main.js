@@ -42,6 +42,16 @@ Hull.component({
         }
         this.$sendBtn.val(val);
       }
+    },
+
+    'keyup input[type="search"]': function(e) {
+      var search = (e.target.value || "").toLowerCase();
+      if (search.length > 0) {
+        this.$('[data-friend]').hide();
+        this.$('[data-friend-name*="' + search + '"]').show();
+      } else {
+        this.$('[data-friend]').show();
+      }
     }
   },
 
@@ -113,6 +123,9 @@ Hull.component({
   },
 
   helpers: {
+    downcase: function(str) {
+      return (str || "").toLowerCase()
+    },
     grid: function(list, columns, options) {
       var row_start = "<div class='row'>";
       var row_end = "</div>";

@@ -7,7 +7,9 @@
       <a href="#" data-hull-action="unselectAll">Unselect all</a>
     </small>
     {{/if}}
-    <h2 class="panel-title">{{fallback options.title "Select friends"}}</h2>
+    <h2 class="panel-title">
+      {{fallback options.title "Select friends"}}
+    </h2>
   </div>
 
   <div class="panel-body">
@@ -22,10 +24,15 @@
           <hr/>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <input type="search" class="form-control" />
+        </div>
+      </div>
       {{#if friendsList}}
       <div class="users-grid hidden">
         {{#grid friendsList columns}}
-        <div class="media" data-friend="{{id}}">
+        <div class="media" data-friend="{{id}}" data-friend-name="{{downcase name}}">
           <div class="pull-right">
             <input type="checkbox" name="friends[]" value="{{id}}" id="friend-selected-{{id}}" class="hidden"/>
           </div>
